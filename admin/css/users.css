@@ -1,0 +1,25 @@
+
+
+/*.keywords{
+
+            display: none;
+        }
+*/
+
+/*dekstop Version*/
+
+
+@media (min-width: 992px) { 
+
+
+#btn_reg{
+
+		margin-top: 30px;
+		padding-left: 250px;
+
+		
+
+	}
+
+
+ }

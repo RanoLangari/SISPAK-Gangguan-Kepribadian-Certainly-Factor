@@ -1,0 +1,83 @@
+
+body{
+
+	color: black;
+	font-family: arial;
+
+}
+
+h3{
+
+text-align: center;
+
+
+
+}
+
+
+h2{
+	margin-top: 10px;
+	margin-bottom:10px;
+	margin-left: 35px;
+	
+	color: lightblue;
+	font-style: italic;
+}
+
+img{
+	padding-right: -15px;
+	padding-left: -40px;
+	width: 13%;
+
+}
+
+
+table{
+
+
+	width: 90%;
+	margin:auto;
+	
+}
+
+td{
+	text-align: center;
+}
+
+tr:nth-child(even){
+
+	background-color: #ddd;
+}
+
+.nama{
+
+	text-align: left;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+.apenyakit{
+	
+	color: red;
+	text-transform: capitalize;
+}
+
+.agejala{
+
+text-transform: capitalize;
+text-align: left;
+
+}
+
+p{
+	text-align: right;
+	margin-bottom:-5px;
+	margin-top: -5px;
+}
+
+.des{
+
+text-align: left;
+
+
+}

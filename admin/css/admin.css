@@ -1,0 +1,19 @@
+.card-body-icon{
+
+	position: absolute;
+	z-index: 0;
+	top:25px;
+	right: 4px;
+	opacity: 0.1;
+	font-size: 90px;
+
+}
+
+.display-4{
+	font-weight: bold;
+}
+
+.border{
+
+	justify-content: center;
+}
