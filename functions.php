@@ -1,4 +1,7 @@
 <?php
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 $conn = mysqli_connect("localhost", "root", "", "gangguan_kepribadian");
 
@@ -836,5 +839,45 @@ function selesai($data)
 
 	mysqli_query($conn, "DELETE FROM diagnosis WHERE idduser = '$idu'");
 
+	return mysqli_affected_rows($conn);
+}
+
+
+function importDataViaExcel($data)
+{
+	global $conn;
+	// id user
+
+	$query = "SELECT max(id_tuser) as max_code FROM tuser";
+
+	$hasil = mysqli_query($conn, $query);
+
+	$data = mysqli_fetch_assoc($hasil);
+
+	$id = $data['max_code'];
+
+	$urutan = (int)substr($id, 1, 3);
+
+	$urutan;
+
+	$huruf = 'U';
+	$id_user = $huruf . sprintf("%02s", $urutan);
+	$fileName = $_FILES['excel']['tmp_name'];
+	$spreadsheet = IOFactory::load($fileName);
+	$sheetData = $spreadsheet->getActiveSheet()->toArray();
+	for ($i = 1; $i < count($sheetData); $i++) {
+		$id_user++;
+		$user = $sheetData[$i]['0'];
+		$pass = $sheetData[$i]['1'];
+		$passEnkrip = password_hash($pass, PASSWORD_DEFAULT);
+		$nama = $sheetData[$i]['2'];
+		$jk = $sheetData[$i]['3'];
+		$prodi = $sheetData[$i]['4'];
+		$alamat = $sheetData[$i]['5'];
+		$hp = $sheetData[$i]['6'];
+		$level = $sheetData[$i]['7'];
+		$query = "INSERT INTO tuser VALUES ('$id_user','$user','$passEnkrip','$nama','$jk','$prodi','$alamat','$hp','$level')";
+		mysqli_query($conn, $query);
+	}
 	return mysqli_affected_rows($conn);
 }
